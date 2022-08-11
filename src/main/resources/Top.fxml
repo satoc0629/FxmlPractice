@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import practice.dto.Customer?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="practice.controller.TopController"
+            prefHeight="800.0" prefWidth="1200.0">
+    <VBox alignment="CENTER">
+        <HBox alignment="BOTTOM_LEFT">
+            <Button onAction="#refresh">
+                <HBox.margin>
+                    <Insets top="10" right="10" left="10" bottom="10"/>
+                </HBox.margin>
+                Refresh
+            </Button>
+            <HBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS">
+                <HBox.margin>
+                    <Insets top="10" right="10" left="10" bottom="10"/>
+                </HBox.margin>
+                <Hyperlink>Sign Out</Hyperlink>
+            </HBox>
+        </HBox>
+        <TableView fx:id="sampleTable" VBox.vgrow="ALWAYS">
+            <VBox.margin>
+                <Insets top="10" right="10" left="10" bottom="10"/>
+            </VBox.margin>
+            <columns>
+                <TableColumn text="firstName">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="firstName"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="lastName">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="lastName"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+        <HBox alignment="BASELINE_RIGHT">
+            <Button>
+                <HBox.margin>
+                    <Insets top="10" right="10" left="10" bottom="10"/>
+                </HBox.margin>
+                Close
+            </Button>
+        </HBox>
+    </VBox>
+</AnchorPane>
