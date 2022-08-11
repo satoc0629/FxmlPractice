@@ -2,16 +2,27 @@ plugins {
     id 'java'
     id 'application'
     id 'idea'
-    id "io.freefair.lombok" version "5.3.0"
+    id "io.freefair.lombok" version "6.5.0.3"
     id "org.openjfx.javafxplugin" version "0.0.13"
+    id 'org.springframework.boot' version '2.7.2'
 }
+
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+
+repositories {
+    maven {
+        url "https://nexus.gluonhq.com/nexus/content/repositories/releases/"
+    }
+}
+
 def javaFXVersion = "18.0.2"
 javafx {
     version = javaFXVersion
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
-mainClassName = "Main"
+mainClassName = "practice.Main"
 
 println gradle.gradleHomeDir
 
@@ -29,15 +40,20 @@ repositories {
 
 }
 dependencies {
+    implementation('org.springframework.boot:spring-boot-starter')
+
+//    implementation('org.openjfx:javafx:18.0.2')
+    implementation('org.openjfx:javafx-controls:18.0.2')
+    implementation('org.openjfx:javafx-fxml:18.0.2')
 
     implementation 'com.h2database:h2:2.1.212'
     implementation 'com.google.guava:guava:31.1-jre'
     implementation group: 'javax.inject', name: 'javax.inject', version: '1'
-    implementation group: 'org.springframework', name: 'spring-context', version: '5.2.21.RELEASE'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
     implementation group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '6.2.1.jre7'
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
     implementation group: 'com.typesafe', name: 'config', version: '1.3.3'
+
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.9'
     implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.2.9'
@@ -46,9 +62,7 @@ dependencies {
     implementation group: 'org.slf4j', name: 'log4j-over-slf4j', version: '1.7.25'
     implementation group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.11.RELEASE'
 
-
 //    testCompile group: 'junit', name: 'junit', version: '8.9.0'
-//    testCompile group: 'org.springframework', name: 'spring-test', version:'4.0.5.RELEASE'
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+//    compileOnly 'org.projectlombok:lombok'
+//    annotationProcessor 'org.projectlombok:lombok'
 }

@@ -1,8 +1,12 @@
+package practice;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import practice.controller.TopController;
 import practice.dto.Customer;
 
@@ -12,21 +16,11 @@ import java.util.Objects;
 
 // --module-path $Classpath$ --add-modules javafx.controls,javafx.fxml
 // --module-path ./lib --add-modules javafx.controls,javafx.fxml
-public class Main extends Application {
+@SpringBootApplication
+public class Main {
 
     public static void main(String[] args) {
-        launch(args);
+        Application.launch(FXMain.class);
     }
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(
-                Objects.requireNonNull(getClass().getResource("Top.fxml")));
-
-        Scene scene = new Scene(root, 800, 1200);
-
-        stage.setTitle("FXML Welcome");
-        stage.setScene(scene);
-        stage.show();
-    }
 }

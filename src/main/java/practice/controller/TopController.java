@@ -7,9 +7,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import practice.dto.Customer;
 
 @Slf4j
+@Component
 public class TopController {
     @FXML
     TableView<Customer> sampleTable;
