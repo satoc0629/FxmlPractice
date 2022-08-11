@@ -1,0 +1,2 @@
+# FxmlPractice
+JavaFX Fxml Practice
