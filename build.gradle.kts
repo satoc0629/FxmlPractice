@@ -22,7 +22,7 @@ javafx {
 }
 
 application {
-    mainClassName = "practice.Main"
+    mainClass.set("practice.Main")
     group = "TestDataCreatorByDB"
     version = "0.0.1-SNAPSHOT"
     description = """"""
