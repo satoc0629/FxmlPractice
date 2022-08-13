@@ -1,2 +1,8 @@
 # FxmlPractice
-JavaFX Fxml Practice
+JavaFX Fxml Practice.  
+Template Project.
+## Stack
+* Kotlin
+* Spring Boot
+* JavaFX
+    * FXML
