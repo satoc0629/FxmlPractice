@@ -34,6 +34,9 @@ application {
     tasks.jar {
         duplicatesStrategy = DuplicatesStrategy.INCLUDE
     }
+    tasks.bootJar {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    }
 }
 
 println(gradle.gradleHomeDir)
