@@ -1,24 +1,24 @@
-package practice.infrastructure;
+package practice.infrastructure
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
-
-import java.io.IOException;
+import javafx.fxml.FXMLLoader
+import javafx.scene.Parent
+import javafx.util.Callback
+import lombok.RequiredArgsConstructor
+import org.springframework.context.ApplicationContext
+import org.springframework.stereotype.Component
+import java.io.IOException
 
 @Component
-@RequiredArgsConstructor
-public class MySpringFXMLLoader {
+class MySpringFXMLLoader constructor(private val context: ApplicationContext) {
 
-    private final ApplicationContext context;
-
-    public Parent load(String path) throws IOException {
-        FXMLLoader loader = new FXMLLoader(); // ★オリジナルの FXMLLoader を生成
-
-        loader.setControllerFactory(this.context::getBean); // ★ControllerFactory に ApplicationContext を利用する
-
-        return loader.load(MySpringFXMLLoader.class.getClassLoader().getResourceAsStream(path));
+    @Throws(IOException::class)
+    fun load(path: String?): Parent {
+        val loader = FXMLLoader() // ★オリジナルの FXMLLoader を生成
+        loader.controllerFactory = Callback { requiredType: Class<*>? ->
+            context!!.getBean(requiredType)
+        } // ★ControllerFactory に ApplicationContext を利用する
+        return loader.load(
+                MySpringFXMLLoader::class.java
+                        .classLoader.getResourceAsStream(path))
     }
 }

@@ -1,46 +1,36 @@
-package practice;
+package practice
 
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ConfigurableApplicationContext;
-import practice.infrastructure.MySpringFXMLLoader;
+import javafx.application.Application
+import javafx.application.Platform
+import javafx.scene.Scene
+import javafx.stage.Stage
+import org.springframework.boot.builder.SpringApplicationBuilder
+import org.springframework.context.ConfigurableApplicationContext
+import practice.infrastructure.MySpringFXMLLoader
+import java.io.IOException
 
-import java.io.IOException;
-import java.util.Objects;
-
-public class FXMain extends Application {
-    private ConfigurableApplicationContext applicationContext;
-
-    @Override
-    public void init() throws Exception {
-        super.init();
-        applicationContext = new SpringApplicationBuilder(Main.class).run();
+class FXMain : Application() {
+    private var applicationContext: ConfigurableApplicationContext? = null
+    @Throws(Exception::class)
+    override fun init() {
+        super.init()
+        applicationContext = SpringApplicationBuilder(Main::class.java).run()
     }
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        MySpringFXMLLoader fxloader = applicationContext.getBean(MySpringFXMLLoader.class);
-
-        Parent root = fxloader.load("Top.fxml");
-
-        Scene scene = new Scene(root, 800, 1200);
-
-        stage.setTitle("FXML Welcome");
-        stage.setScene(scene);
-        stage.show();
+    @Throws(IOException::class)
+    override fun start(stage: Stage) {
+        val fxloader = applicationContext!!.getBean(MySpringFXMLLoader::class.java)
+        val root = fxloader.load("Top.fxml")
+        val scene = Scene(root, 800.0, 1200.0)
+        stage.title = "FXML Welcome"
+        stage.scene = scene
+        stage.show()
     }
 
-    @Override
-    public void stop() throws Exception {
-        super.stop();
-        applicationContext.close();
-        Platform.exit();
+    @Throws(Exception::class)
+    override fun stop() {
+        super.stop()
+        applicationContext!!.close()
+        Platform.exit()
     }
-
 }

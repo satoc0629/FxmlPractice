@@ -1,35 +1,29 @@
-package practice.dto;
+package practice.dto
 
-import javafx.beans.property.SimpleStringProperty;
-import lombok.Data;
+import javafx.beans.property.SimpleStringProperty
 
-@Data
-public class Customer {
-    private final SimpleStringProperty firstName = new SimpleStringProperty("");
-    private final SimpleStringProperty lastName = new SimpleStringProperty("");
+class Customer @JvmOverloads constructor(firstName: String? = "", lastName: String? = "") {
+    private val firstName = SimpleStringProperty("")
+    private val lastName = SimpleStringProperty("")
 
-    public Customer() {
-        this("", "");
+    init {
+        setFirstName(firstName)
+        setLastName(lastName)
     }
 
-    public Customer(String firstName, String lastName) {
-        setFirstName(firstName);
-        setLastName(lastName);
+    fun getFirstName(): String {
+        return firstName.get()
     }
 
-    public String getFirstName() {
-        return firstName.get();
+    fun setFirstName(fName: String?) {
+        firstName.set(fName)
     }
 
-    public void setFirstName(String fName) {
-        firstName.set(fName);
+    fun getLastName(): String {
+        return lastName.get()
     }
 
-    public String getLastName() {
-        return lastName.get();
-    }
-
-    public void setLastName(String fName) {
-        lastName.set(fName);
+    fun setLastName(fName: String?) {
+        lastName.set(fName)
     }
 }
