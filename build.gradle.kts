@@ -6,7 +6,6 @@ plugins {
     id("io.freefair.lombok") version "6.5.0.3"
     id("org.openjfx.javafxplugin") version "0.0.13"
     id("org.springframework.boot") version "2.7.2"
-//    id("io.spring.dependency-management")
 }
 
 apply(plugin = "io.spring.dependency-management")
@@ -31,6 +30,9 @@ application {
         options.encoding = "UTF-8"
         options.isDeprecation = true
         options.release.set(11)
+    }
+    tasks.jar {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
     }
 }
 
